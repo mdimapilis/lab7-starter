@@ -21,6 +21,13 @@ function init() {
  * @returns {Array<Object>} An array of recipes found in localStorage
  */
 function getRecipesFromStorage() {
+	const recipeData = localStorage.getItem('recipes');
+	if(recipeData) {
+		return JSON.parse(recipeData);
+	}
+	else {
+		return [];
+	}
 	// A9. TODO - Complete the functionality as described in this function
 	//           header. It is possible in only a single line, but should
 	//           be no more than a few lines.
@@ -34,7 +41,13 @@ function getRecipesFromStorage() {
  * @param {Array<Object>} recipes An array of recipes
  */
 function addRecipesToDocument(recipes) {
+	let mainEle = document.querySelector('main');
 	// A10. TODO - Get a reference to the <main> element
+	for(let i = 0; i < recipes.length; i++) {
+		let recipeEle = document.createElement('recipe-card');
+		recipeEle.data = recipes[i];
+		mainEle.append(recipeEle);
+	}
 	// A11. TODO - Loop through each of the recipes in the passed in array,
 	//            create a <recipe-card> element for each one, and populate
 	//            each <recipe-card> with that recipe data using element.data = ...
@@ -48,6 +61,7 @@ function addRecipesToDocument(recipes) {
  */
 function saveRecipesToStorage(recipes) {
 	// EXPLORE - START (All explore numbers start with B)
+	
 	// B1. TODO - Complete the functionality as described in this function
 	//            header. It is possible in only a single line, but should
 	//            be no more than a few lines.
