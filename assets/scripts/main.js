@@ -77,6 +77,7 @@ function initFormHandler() {
 	// B2. TODO - Get a reference to the <form> element
 	let submitBtn = formEle.childNodes[9];
 	submitBtn.addEventListener("click", (event) => {
+		event.preventDefault();
 		let formData = new FormData(formEle);
 		let recipeObject = new Object();
 		recipeObject = {
